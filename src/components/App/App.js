@@ -5,7 +5,6 @@ import getAllTricks from '../../fetchTricks';
 import Tricks from '../Tricks/Tricks';
 import Form from '../Form/Form';
 
-
 function App() {
  const [allTricks, setAllTricks] = useState([])
  
