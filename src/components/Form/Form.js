@@ -25,6 +25,7 @@ function Form(props){
 
    return (
     <form>
+      <h2>Enter trick name, stance, and obstacle</h2>
       <input
       type='text'
       placeholder='trick name'
@@ -35,7 +36,7 @@ function Form(props){
 
     <input
       type='text'
-      placeholder='stance'
+      placeholder='stance: regular or switch'
       name='stance'
       value={stance}
       onChange={event => setStance(event.target.value)}
@@ -43,7 +44,7 @@ function Form(props){
 
     <input
       type='text'
-      placeholder='obstacle'
+      placeholder='Flatground, Ledge, Rail, Stairs, or Pool'
       name='obstacle'
       value={obstacle}
       onChange={event => setObstacle(event.target.value)}
