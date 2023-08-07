@@ -2,9 +2,10 @@ form {
   margin: auto;
 }
 
-input, button {
+input, button, label {
   margin: 5px;
   width: 30%;
   border: 2px solid black;
   font-size: 18px;
+  background: white;
 }

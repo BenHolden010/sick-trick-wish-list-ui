@@ -11,6 +11,7 @@ const trickCards = allTricks.map(trick=>{
     obstacle={trick.obstacle}
     tutorial={trick.tutorial}
     id={trick.id}
+    key={trick.id}
     />
   )
 })

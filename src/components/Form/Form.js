@@ -3,8 +3,9 @@ import './Form.css'
 
 function Form(props){
   const [name, setName] = useState("");
-  const [stance, setStance] = useState("");
-  const [obstacle, setObstacle] = useState("");
+  const [stance, setStance] = useState("regular");
+  const [obstacle, setObstacle] = useState("flat ground");
+  const [tutorial, setTutorial] = useState("");
   
   function submitTricks(event) {
     event.preventDefault()
@@ -12,45 +13,56 @@ function Form(props){
         id: Date.now(),
         name,
         stance,
-        obstacle
+        obstacle,
+        tutorial
     }
     props.addTrick(newTrick)
     clearInput()
   }
   function clearInput(){
     setName("")
-    setStance("")
-    setObstacle("")
+    // setStance("")
+    // setObstacle("")
+    setTutorial("")
   }
 
    return (
     <form>
-      <h2>Enter trick name, stance, and obstacle</h2>
+      <h2>Enter trick name, stance, obstacle, and tutorial url.</h2>
       <input
       type='text'
       placeholder='trick name'
-      name='name'
+      className='name'
       value={name}
       onChange={event => setName(event.target.value)}
       />
 
-    <input
-      type='text'
-      placeholder='stance: regular or switch'
-      name='stance'
-      value={stance}
-      onChange={event => setStance(event.target.value)}
-      />
+    <label> Select Stance:
+      <select className='default-label' onChange={event => setStance(event.target.value)}>
+        <option value='regular'>Regular</option>
+        <option value='switch'>Switch</option>
+      </select>
+    </label>
+
+    <label> Select Obstacle:
+      <select className='default-label' onChange={event => setObstacle(event.target.value)}>
+        <option value='flatground'>Flatground</option>
+        <option value='ledge'>Ledge</option>
+        <option value='rail'>Rail</option>
+        <option value='stairs'>Stairs</option>
+        <option value='pool'>Ledge</option>
+      </select>
+    </label>
 
     <input
       type='text'
-      placeholder='Flatground, Ledge, Rail, Stairs, or Pool'
-      name='obstacle'
-      value={obstacle}
-      onChange={event => setObstacle(event.target.value)}
+      placeholder='tutorial'
+      className='tutorial'
+      value={tutorial}
+      onChange={event => setTutorial(event.target.value)}
       />
 
-      <button onClick = {event => submitTricks(event)}>SEND IT</button>
+      <button className="add-trick-button" onClick = {event => submitTricks(event)}>SEND IT</button>
     </form>
    )
 }

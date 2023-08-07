@@ -1,26 +1,43 @@
 import './App.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import getAllTricks from '../../fetchTricks';
+import {fetchTricks, postTrick } from '../../APICalls';
 import Tricks from '../Tricks/Tricks';
 import Form from '../Form/Form';
 
 function App() {
+//  const [apiTricks, setApiTricks] = useState([])
+//  const [localTricks, setLocalTricks] = useState([])
  const [allTricks, setAllTricks] = useState([])
  
  function addTrick(newTrick) {
-  setAllTricks([...allTricks, newTrick])
+  postTrick(newTrick)
+  // fetchTricks()
+  // setAllTricks([...allTricks, newTrick])
+  // setLocalTricks([...apiTricks, ...localTricks, newTrick])
  }
+ 
+//  {reload && <Navigate to='/' />}
+//  localStorage.setItem('skateData', JSON.stringify(allTricks))
+//  const storedData = localStorage.getItem('skateData')
+//  const parsedData = JSON.parse(storedData)
+//  useEffect(() => {
+//  setAllTricks(parsedData)
+// }, []);
+
+//  setAllTricks(parsedData)
+
+ 
 
  useEffect(() => {
-  // setAllTricks(getAllTricks())
-    
+    fetchTricks()
+    .then(data=>
+      setAllTricks(data)
+      )
+  }, [allTricks]);
 
-    getAllTricks()
-    .then(data=>setAllTricks(data))
-    
-    // console.log(allTricks)
-  }, []);
+
+
   
   return (
     <div className="App">
